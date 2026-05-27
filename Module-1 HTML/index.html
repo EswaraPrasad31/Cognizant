@@ -60,6 +60,52 @@
         box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
     }
 
+    .form-container{
+    background-color: white;
+    width: 60%;
+    margin: auto;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.15);
+}
+
+.form-container h2{
+    text-align: center;
+    color: #00695c;
+}
+
+input, select, textarea{
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+button{
+    background-color: #11998e;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover{
+    background-color: #0d7d73;
+}
+
+output{
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #00695c;
+    text-align: center;
+}
 </style>
 </head>
 <body>
@@ -172,6 +218,59 @@
 
         </table>
      </section>
+
+     <!-- Event Registration Section -->
+
+     <section id="register">
+
+       <div class="form-container">
+
+        <h2>Event Registration Form</h2>
+
+        <form onsubmit="document.getElementById('msg').value=
+                'Registration submitted successfully!'; return false;">
+
+        <label>Full Name:</label>
+        <input type="text"
+        placeholder="Enter your name"
+        required
+        autofocus>
+
+        <label>Email:</label>
+        <input type="email"
+                placeholder="Enter your email"
+        required>
+
+        <label>Event Date:</label>
+        <input type="date" required>
+
+        <label>Event Type:</label>
+
+        <select required>
+            <option value="">Select Event</option>
+            <option>Music Festival</option>
+            <option>Sports Day</option>
+            <option>Food Fair</option>
+            <option>Art Exhibition</option>
+        </select>
+
+        <label>Message:</label>
+
+        <textarea rows="4"
+          placeholder="Enter your message"
+          required>
+        </textarea>
+
+        <button type="submit">Register</button>
+
+    <output id="msg"></output>
+
+    </form>
+
+    </div>
+
+    </section>
+
      </main>
 
     <!-- Footer Section -->
