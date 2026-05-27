@@ -4,6 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Local Community Event Portal</title>
+    <style>
+
+    body{
+        font-family: Arial, sans-serif;
+        background-color: #eef7f6;
+        margin: 20px;
+    }
+
+    #welcomeBanner{
+        background: linear-gradient(135deg,#11998e,#38ef7d);
+        color: white;
+        padding: 20px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+        margin-bottom: 20px;
+    }
+
+    .highlight{
+        background-color: #d8fff3;
+        color: #00695c;
+        padding: 4px 8px;
+        border-radius: 8px;
+        font-weight: bold;
+    }
+
+    section{
+        background-color: white;
+        padding: 15px;
+        border-radius: 12px;
+        margin-top: 15px;
+        box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+    }
+
+</style>
 </head>
 <body>
 
@@ -17,14 +52,27 @@
             <li><a href="help.html" target="_blank">Help</a></li>
         </ul>
     </nav>
+    
+    <!-- Welcome Banner -->
+     <div id="welcomeBanner">
+        <h2>Welcome, Resident!</h2>
+        <p>
+            Stay informed about local activities and services.
+        </p>
+        <p>
+            <span style="color:#ff6b6b; font-weight:bold;">
+    Special Offer: Register today and get priority access to upcoming events!
+</span>
+        </p>
+     </div>
 
     <!-- Main Section -->
      <main>
         <section id="home">
-        <h1>Welcome to Local Community Events</h1>
+        <h1 class="highlight">Welcome to Local Community Events</h1>
         <p>
             Stay updated with local events, register online,
-            and explore community activities.
+            and explore <span class="highlight">community activities.</span>
         </p>
     </section>
     <section id="events">
@@ -34,7 +82,7 @@
             sports activities, and community gatherings.
         </p>
     </section>
-    <section id=""contact>
+    <section id="contact">
         <h2>Contact</h2>
         <p>Email: support@comunnityportal.com</p>
         <p>Phone: +91 987654321</p>
