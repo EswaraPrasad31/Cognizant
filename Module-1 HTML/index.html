@@ -589,249 +589,307 @@
 
     <script>
 
-        let formChanged = false;
+    let formChanged = false;
 
-        /* Registration */
+    console.log("Local Community Event Portal Loaded Successfully");
 
-        function submitRegistration(event){
+    /* Registration */
 
-            event.preventDefault();
+    function submitRegistration(event){
 
-            document.getElementById("msg").innerText =
-            "Registration submitted successfully!";
+        event.preventDefault();
 
-            formChanged = false;
+        console.log("Registration Form Submitted");
+
+        let selectedEvent =
+        document.getElementById("eventType").value;
+
+        console.log("Selected Event:", selectedEvent);
+
+        document.getElementById("msg").innerText =
+        "Registration submitted successfully!";
+
+        formChanged = false;
+    }
+
+    /* Phone Validation */
+
+    function validatePhone(){
+
+        let phone =
+        document.getElementById("phone").value;
+
+        console.log("Phone Entered:", phone);
+
+        if(phone.length != 10 || isNaN(phone)){
+
+            console.log("Invalid Phone Number");
+
+            document.getElementById("phoneMsg").innerText =
+            "Please enter a valid 10-digit phone number.";
+
+            document.getElementById("phoneMsg").style.color =
+            "red";
         }
 
-        /* Phone Validation */
+        else{
 
-        function validatePhone(){
+            console.log("Valid Phone Number");
 
-            let phone =
-            document.getElementById("phone").value;
+            document.getElementById("phoneMsg").innerText =
+            "Valid phone number";
 
-            if(phone.length != 10 || isNaN(phone)){
+            document.getElementById("phoneMsg").style.color =
+            "green";
+        }
+    }
 
-                document.getElementById("phoneMsg").innerText =
-                "Please enter a valid 10-digit phone number.";
+    /* Event Fee */
 
-                document.getElementById("phoneMsg").style.color =
-                "red";
-            }
+    function showFee(){
 
-            else{
+        let fee =
+        document.getElementById("eventSelect").value;
 
-                document.getElementById("phoneMsg").innerText =
-                "Valid phone number";
+        console.log("Selected Fee:", fee);
 
-                document.getElementById("phoneMsg").style.color =
-                "green";
-            }
+        if(fee !== ""){
+
+            document.getElementById("feeDisplay").innerText =
+            "Registration Fee: ₹" + fee;
+
+            document.getElementById("feeDisplay").style.color =
+            "#00695c";
         }
 
-        /* Event Fee */
+        else{
 
-        function showFee(){
+            document.getElementById("feeDisplay").innerText = "";
+        }
+    }
 
-            let fee =
-            document.getElementById("eventSelect").value;
+    /* Feedback */
 
-            if(fee !== ""){
+    function submitFeedback(){
 
-                document.getElementById("feeDisplay").innerText =
-                "Registration Fee: ₹" + fee;
+        console.log("Feedback Submitted");
 
-                document.getElementById("feeDisplay").style.color =
-                "#00695c";
-            }
+        document.getElementById("confirmMsg").innerText =
+        "Feedback submitted successfully!";
+    }
 
-            else{
+    /* Image Enlarge */
 
-                document.getElementById("feeDisplay").innerText = "";
-            }
+    function enlargeImage(){
+
+        console.log("Image Double Clicked");
+
+        let img =
+        document.getElementById("eventImg");
+
+        if(img.style.width === "400px"){
+
+            img.style.width = "250px";
+
+            console.log("Image Reduced");
         }
 
-        /* Feedback */
+        else{
 
-        function submitFeedback(){
+            img.style.width = "400px";
 
-            document.getElementById("confirmMsg").innerText =
-            "Feedback submitted successfully!";
+            console.log("Image Enlarged");
         }
+    }
 
-        /* Image Enlarge */
+    /* Character Counter */
 
-        function enlargeImage(){
+    function countCharacters(){
 
-            let img =
-            document.getElementById("eventImg");
+        let text =
+        document.getElementById("feedbackText").value;
 
-            if(img.style.width === "400px"){
+        console.log("Character Count:", text.length);
 
-                img.style.width = "250px";
-            }
+        document.getElementById("charCount").innerText =
+        text.length;
+    }
 
-            else{
+    /* Video Ready */
 
-                img.style.width = "400px";
-            }
+    function videoReady(){
+
+        console.log("Video Ready to Play");
+
+        document.getElementById("videoMessage").innerText =
+        "Video is ready to play!";
+    }
+
+    /* Save User Preference */
+
+    function savePreference(){
+
+        let selectedEvent =
+        document.getElementById("eventType").value;
+
+        console.log("Saving Preference:", selectedEvent);
+
+        localStorage.setItem(
+            "preferredEvent",
+            selectedEvent
+        );
+
+        sessionStorage.setItem(
+            "sessionEvent",
+            selectedEvent
+        );
+    }
+
+    /* Load Saved Preference */
+
+    window.onload = function(){
+
+        console.log("Loading Saved Preferences");
+
+        let savedEvent =
+        localStorage.getItem("preferredEvent");
+
+        if(savedEvent){
+
+            console.log("Saved Event Found:", savedEvent);
+
+            document.getElementById("eventType").value =
+            savedEvent;
         }
+    }
 
-        /* Character Counter */
+    /* Clear Preferences */
 
-        function countCharacters(){
+    function clearPreferences(){
 
-            let text =
-            document.getElementById("feedbackText").value;
+        console.log("Clearing Storage");
 
-            document.getElementById("charCount").innerText =
-            text.length;
-        }
+        localStorage.clear();
 
-        /* Video Ready */
+        sessionStorage.clear();
 
-        function videoReady(){
+        alert("Preferences cleared successfully!");
 
-            document.getElementById("videoMessage").innerText =
-            "Video is ready to play!";
-        }
+        document.getElementById("eventType").value = "";
+    }
 
-        /* Storage */
+    /* Geolocation */
 
-        function savePreference(){
+    function findLocation(){
 
-            let selectedEvent =
-            document.getElementById("eventType").value;
+        console.log("Finding User Location...");
 
-            localStorage.setItem(
-                "preferredEvent",
-                selectedEvent
+        let output =
+        document.getElementById("locationOutput");
+
+        if(navigator.geolocation){
+
+            navigator.geolocation.getCurrentPosition(
+
+                showPosition,
+                showError,
+
+                {
+                    enableHighAccuracy: true,
+                    timeout: 10000,
+                    maximumAge: 0
+                }
             );
 
-            sessionStorage.setItem(
-                "sessionEvent",
-                selectedEvent
-            );
+            output.innerHTML =
+            "Fetching your location...";
         }
 
-        window.onload = function(){
+        else{
 
-            let savedEvent =
-            localStorage.getItem("preferredEvent");
+            output.innerHTML =
+            "Geolocation is not supported by this browser.";
+        }
+    }
 
-            if(savedEvent){
+    /* Location Success */
 
-                document.getElementById("eventType").value =
-                savedEvent;
-            }
+    function showPosition(position){
+
+        let latitude =
+        position.coords.latitude;
+
+        let longitude =
+        position.coords.longitude;
+
+        console.log("Latitude:", latitude);
+        console.log("Longitude:", longitude);
+
+        document.getElementById("locationOutput").innerHTML =
+
+        "Latitude: " + latitude + "<br>" +
+
+        "Longitude: " + longitude +
+
+        "<br><br>Nearby community events loaded successfully!";
+    }
+
+    /* Location Errors */
+
+    function showError(error){
+
+        let message = "";
+
+        switch(error.code){
+
+            case error.PERMISSION_DENIED:
+
+                console.log("Permission Denied");
+
+                message =
+                "Location access denied by user.";
+                break;
+
+            case error.POSITION_UNAVAILABLE:
+
+                console.log("Position Unavailable");
+
+                message =
+                "Location information unavailable.";
+                break;
+
+            case error.TIMEOUT:
+
+                console.log("Location Timeout");
+
+                message =
+                "Location request timed out.";
+                break;
+
+            case error.UNKNOWN_ERROR:
+
+                console.log("Unknown Error");
+
+                message =
+                "An unknown error occurred.";
+                break;
         }
 
-        function clearPreferences(){
+        document.getElementById("locationOutput").innerHTML =
+        message;
+    }
 
-            localStorage.clear();
+    /* Before Unload Warning */
 
-            sessionStorage.clear();
+    window.onbeforeunload = function(){
 
-            alert("Preferences cleared successfully!");
+        if(formChanged){
 
-            document.getElementById("eventType").value = "";
+            return "You have unsaved changes. Are you sure you want to leave?";
         }
+    }
 
-        /* Geolocation */
-
-        function findLocation(){
-
-            let output =
-            document.getElementById("locationOutput");
-
-            if(navigator.geolocation){
-
-                navigator.geolocation.getCurrentPosition(
-
-                    showPosition,
-                    showError,
-
-                    {
-                        enableHighAccuracy: true,
-                        timeout: 10000,
-                        maximumAge: 0
-                    }
-                );
-
-                output.innerHTML =
-                "Fetching your location...";
-            }
-
-            else{
-
-                output.innerHTML =
-                "Geolocation is not supported by this browser.";
-            }
-        }
-
-        function showPosition(position){
-
-            let latitude =
-            position.coords.latitude;
-
-            let longitude =
-            position.coords.longitude;
-
-            document.getElementById("locationOutput").innerHTML =
-
-            "Latitude: " + latitude + "<br>" +
-
-            "Longitude: " + longitude +
-
-            "<br><br>Nearby community events loaded successfully!";
-        }
-
-        function showError(error){
-
-            let message = "";
-
-            switch(error.code){
-
-                case error.PERMISSION_DENIED:
-
-                    message =
-                    "Location access denied by user.";
-                    break;
-
-                case error.POSITION_UNAVAILABLE:
-
-                    message =
-                    "Location information unavailable.";
-                    break;
-
-                case error.TIMEOUT:
-
-                    message =
-                    "Location request timed out.";
-                    break;
-
-                case error.UNKNOWN_ERROR:
-
-                    message =
-                    "An unknown error occurred.";
-                    break;
-            }
-
-            document.getElementById("locationOutput").innerHTML =
-            message;
-        }
-
-        /* Before unload warning */
-
-        window.onbeforeunload = function(){
-
-            if(formChanged){
-
-                return "You have unsaved changes. Are you sure you want to leave?";
-            }
-        }
-
-    </script>
+</script>
 
 </body>
 
