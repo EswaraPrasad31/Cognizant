@@ -128,6 +128,30 @@ output{
     font-weight: bold;
     color: #00695c;
 }
+.feedback-container{
+    background-color:white;
+    width:60%;
+    margin:40px auto;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0px 4px 12px rgba(0,0,0,0.15);
+}
+.feedback-container h2{
+    text-align:center;
+    color:#00695c;
+    margin-bottom:20px;
+}
+.event-photo{
+    width:250px;
+    border-radius:12px;
+    border:3px solid #11998e;
+    transition:0.3s;
+    cursor:pointer;
+}
+.char-count{
+    font-size:14px;
+    color:#555;
+}
 </style>
 </head>
 <body>
@@ -292,12 +316,125 @@ output{
     </div>
 
     </section>
+        <!-- Event Feedback Section -->
 
+<section id="feedback">
+
+<div class="feedback-container">
+
+<h2>Event Feedback</h2>
+
+<form>
+
+<label>Phone Number:</label>
+
+<input type="text"
+       id="phone"
+       placeholder="Enter 10-digit phone number"
+       onblur="validatePhone()">
+
+<p id="phoneMsg"></p>
+
+
+<label>Select Event:</label>
+
+<select id="eventSelect" onchange="showFee()">
+
+    <option value="">Choose Event</option>
+    <option value="100">Music Festival</option>
+    <option value="150">Sports Day</option>
+    <option value="200">Food Fair</option>
+
+</select>
+
+<p id="feeDisplay"></p>
+
+
+<label>Your Feedback:</label>
+
+<textarea id="feedbackText"
+          rows="5"
+          placeholder="Enter your feedback"
+          onkeyup="countCharacters()">
+</textarea>
+
+<p class="char-count">
+Characters:
+<span id="charCount">0</span>
+</p>
+
+
+<label>Double Click Event Image:</label>
+<br><br>
+
+<img src="./images/community.jpg"
+     id="eventImg"
+     class="event-photo"
+     ondblclick="enlargeImage()"
+     alt="Community Event Image">
+
+
+<br><br>
+
+<button type="button" onclick="submitFeedback()">
+Submit Feedback
+</button>
+
+<p id="confirmMsg"></p>
+
+</form>
+
+</div>
+
+</section>
      </main>
 
     <!-- Footer Section -->
      <footer> 
         <p>&copy; 2026 Local Community Event Portal. All rights reserved.</p>
      </footer>
+     <script>
+        function validatePhone(){
+            let phone=document.getElementById('phone').value;
+            if(phone.length!=10 || isNaN(phone)){
+                document.getElementById('phoneMsg').innerText=
+                'Please enter a valid 10-digit phone number.';
+                document.getElementById('phoneMsg').style.color='red';
+            }
+            else{
+                document.getElementById('phoneMsg').innerText=
+                'Valid phone number';
+                document.getElementById('phoneMsg').style.color='green';
+            }
+        }
+        function showFee(){
+            let fee=document.getElementById('eventSelect').value;
+            if(fee!==""){
+                document.getElementById('feeDisplay').innerText=
+                'Registration Fee: ₹'+fee;
+                document.getElementById('feeDisplay').style.color='#00695c';
+            }
+            else{
+                document.getElementById('feeDisplay').innerText='';
+            }
+        }
+        function submitFeedback(){
+            document.getElementById('confirmMsg').innerText=
+            "Feedback submitted successfully!";
+        }
+        function enlargeImage(){
+            let img=document.getElementById('eventImg');
+            if(img.style.width==='400px'){
+                img.style.width='250px';
+            }
+            else{
+                img.style.width='400px';
+            }
+        }
+        function countCharacters(){
+            let text=document.getElementById('feedbackText').value;
+            document.getElementById('charCount').innerText=text.length;
+        }
+     </script>
 </body>
 </html>
