@@ -152,6 +152,30 @@ output{
     font-size:14px;
     color:#555;
 }
+.video-section{
+    background-color:white;
+    width:70%;
+    margin:40px auto;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0px 4px 12px rgba(0,0,0,0.15);
+    text-align:center;
+}
+.video-section h2{
+    color:#00695c;
+    margin-bottom:20px;
+}
+video{
+    width:100%;
+    max-width:700px;
+    border-radius:12px;
+    border:4px solid #11998e;
+}
+#videoMessage{
+    margin-top:15px;
+    font-weight:bold;
+    color:#11998e;
+}
 </style>
 </head>
 <body>
@@ -387,6 +411,18 @@ Submit Feedback
 </div>
 
 </section>
+
+<!--Promo Video Section-->
+<section id="promoVideo">
+    <div class="video-section">
+        <h2>Community Event Promo</h2>
+        <video controls oncanplay="videoReady()">
+            <source src="./video/video1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <p id="videoMessage"></p>
+    </div>
+</section>
      </main>
 
     <!-- Footer Section -->
@@ -434,6 +470,14 @@ Submit Feedback
         function countCharacters(){
             let text=document.getElementById('feedbackText').value;
             document.getElementById('charCount').innerText=text.length;
+        }
+        function videoReady(){
+            document.getElementById('videoMessage').innerText=
+            "Video is ready to play!";
+        }
+        /* Warn user before leaving unfinished form */
+        window.onbeforeunload=function(){
+            return "You have unsaved changes. Are you sure you want to leave?";
         }
      </script>
 </body>
