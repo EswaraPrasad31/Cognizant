@@ -115,6 +115,7 @@ button{
     cursor: pointer;
     font-size: 17px;
     transition: 0.3s;
+    margin-top: 10px;
 }
 
 button:hover{
@@ -176,6 +177,7 @@ video{
     font-weight:bold;
     color:#11998e;
 }
+
 </style>
 </head>
 <body>
@@ -316,12 +318,12 @@ video{
 
         <label>Event Type:</label>
 
-        <select required>
+        <select id="eventType" required onchange="savePreference()">
             <option value="">Select Event</option>
-            <option>Music Festival</option>
-            <option>Sports Day</option>
-            <option>Food Fair</option>
-            <option>Art Exhibition</option>
+            <option value="Music Festival">Music Festival</option>
+            <option value="Sports Day">Sports Day</option>
+            <option value="Food Fair">Food Fair</option>
+            <option value="Art Exhibition">Art Exhibition</option>
         </select>
 
         <label>Message:</label>
@@ -332,6 +334,7 @@ video{
         </textarea>
 
         <button type="submit">Register</button>
+        <button type="button" onclick="clearPreferences()">Clear Preferences</button>
 
     <output id="msg"></output>
 
@@ -479,6 +482,52 @@ Submit Feedback
         window.onbeforeunload=function(){
             return "You have unsaved changes. Are you sure you want to leave?";
         }
+        /* Save selected event type */
+
+function savePreference(){
+
+    let selectedEvent =
+    document.getElementById("eventType").value;
+
+    localStorage.setItem(
+        "preferredEvent",
+        selectedEvent
+    );
+
+    sessionStorage.setItem(
+        "sessionEvent",
+        selectedEvent
+    );
+}
+
+
+/* Retrieve preference on page reload */
+
+window.onload = function(){
+
+    let savedEvent =
+    localStorage.getItem("preferredEvent");
+
+    if(savedEvent){
+
+        document.getElementById("eventType").value =
+        savedEvent;
+    }
+}
+
+
+/* Clear storage */
+
+function clearPreferences(){
+
+    localStorage.clear();
+
+    sessionStorage.clear();
+
+    alert("Preferences cleared successfully!");
+
+    document.getElementById("eventType").value = "";
+}
      </script>
 </body>
 </html>
