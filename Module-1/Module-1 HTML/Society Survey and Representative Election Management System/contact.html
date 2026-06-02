@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact / Help</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -18,67 +19,66 @@
         </nav>
     </header>
 
-    <main>
+    <main class="contact-container">
 
-        <section>
-            <h2>Send Us a Message</h2>
+    <section class="contact-form-section">
 
-            <form>
+        <h2>Send Us a Message</h2>
 
-                <label for="name">Name:</label><br>
-                <input type="text" id="name" name="name" required>
-                <br><br>
+        <form class="contact-form">
 
-                <label for="email">Email:</label><br>
-                <input type="email" id="email" name="email" required>
-                <br><br>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
 
-                <label for="subject">Subject:</label><br>
-                <input type="text" id="subject" name="subject" required>
-                <br><br>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
 
-                <label for="message">Message:</label><br>
-                <textarea id="message" name="message" rows="6" cols="40" required></textarea>
-                <br><br>
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" required>
 
-                <button type="submit">Submit</button>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
 
-            </form>
-        </section>
+            <button type="submit">Submit</button>
 
-        <hr>
+        </form>
 
-        <section>
+    </section>
 
-            <h2>Society Office Information</h2>
+    <section class="office-info">
 
+        <h2>Society Office Information</h2>
+
+        <div class="info-card">
+            <h3>📍 Address</h3>
             <p>
-                <strong>Address:</strong><br>
-                Green Valley Residential Society,<br>
-                Main Road, Sector-5,<br>
+                Green Valley Residential Society<br>
+                Main Road, Sector-5<br>
                 Hyderabad, Telangana - 500001
             </p>
+        </div>
 
-            <p>
-                <strong>Email:</strong><br>
-                societyoffice@gmail.com
-            </p>
+        <div class="info-card">
+            <h3>📧 Email</h3>
+            <p>societyoffice@gmail.com</p>
+        </div>
 
-            <p>
-                <strong>Phone Number:</strong><br>
-                +91 9876543210
-            </p>
+        <div class="info-card">
+            <h3>📞 Phone Number</h3>
+            <p>+91 9876543210</p>
+        </div>
 
+        <div class="info-card">
+            <h3>🕒 Office Timings</h3>
             <p>
-                <strong>Office Timings:</strong><br>
                 Monday - Saturday<br>
                 9:00 AM - 6:00 PM
             </p>
+        </div>
 
-        </section>
+    </section>
 
-    </main>
-
+</main>
     <footer>
         <p>&copy; 2026 Society Survey & Representative Election Management System</p>
     </footer>

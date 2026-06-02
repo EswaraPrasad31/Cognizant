@@ -4,41 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resident Registration</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Resident Registration</h1>
-    </header>
-    <main>
-        <form>
-            <label>Full Name:</label><br>
-            <input type="text" name="fullname" required><br><br>
 
-            <label>Flat / House Number:</label><br>
-            <input type="text" name="house" required><br><br>
+    <main class="register-container">
 
-            <label>Email:</label><br>
-            <input type="email" name="email" required><br><br>
+        <form class="register-form">
 
-            <label>Mobile Number:</label><br>
-            <input type="tel" name="mobile" required><br><br>
+            <h2>Resident Registration</h2>
 
-            <label>Password:</label><br>
-            <input type="password" name="password" required><br><br>
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
 
-            <label>Confirm Password:</label><br>
-            <input type="password" name="confirmpassword" required><br><br>
+            <label for="house">Flat / House Number</label>
+            <input type="text" id="house" name="house" placeholder="Enter flat number" required>
 
-            <label>Resident Type:</label><br>
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
-            <input type="radio" name="residentType" value="Owner">
-            <label>Owner</label>
+            <label for="mobile">Mobile Number</label>
+            <input type="tel" id="mobile" name="mobile" placeholder="Enter mobile number" required>
 
-            <input type="radio" name="residentType" value="Tenant">
-            <label>Tenant</label><br><br>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Create password" required>
+
+            <label for="confirm">Confirm Password</label>
+            <input type="password" id="confirm" name="confirm" placeholder="Confirm password" required>
+
+            <label>Resident Type</label>
+
+            <div class="radio-group">
+                <input type="radio" id="owner" name="residentType" value="Owner">
+                <label for="owner">Owner</label>
+
+                <input type="radio" id="tenant" name="residentType" value="Tenant">
+                <label for="tenant">Tenant</label>
+            </div>
 
             <button type="submit">Register</button>
+
         </form>
+
     </main>
+
 </body>
 </html>

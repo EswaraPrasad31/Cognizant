@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poll Management</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -11,9 +12,9 @@
         <h1>Active Polls</h1>
     </header>
 
-    <main>
+    <main class="poll-table-container">
 
-        <table border="1" cellpadding="10">
+        <table class="poll-table">
 
             <tr>
                 <th>Poll Title</th>
@@ -29,7 +30,7 @@
                 <td>Choose the Society President</td>
                 <td>01-06-2026</td>
                 <td>10-06-2026</td>
-                <td>Active</td>
+                <td><span class="active-status">Active</span></td>
                 <td><button>Vote Now</button></td>
             </tr>
 
@@ -38,7 +39,7 @@
                 <td>Select the Society Secretary</td>
                 <td>01-06-2026</td>
                 <td>10-06-2026</td>
-                <td>Active</td>
+                <td><span class="active-status">Active</span></td>
                 <td><button>Vote Now</button></td>
             </tr>
 
@@ -47,16 +48,16 @@
                 <td>Select the Treasurer</td>
                 <td>01-06-2026</td>
                 <td>10-06-2026</td>
-                <td>Active</td>
+                <td><span class="active-status">Active</span></td>
                 <td><button>Vote Now</button></td>
             </tr>
 
             <tr>
-                <td>Cultural Committee Head Election</td>
+                <td>Cultural Committee Head</td>
                 <td>Choose Cultural Head</td>
                 <td>01-06-2026</td>
                 <td>10-06-2026</td>
-                <td>Active</td>
+                <td><span class="active-status">Active</span></td>
                 <td><button>Vote Now</button></td>
             </tr>
 
@@ -65,7 +66,7 @@
                 <td>Choose Security Coordinator</td>
                 <td>01-06-2026</td>
                 <td>10-06-2026</td>
-                <td>Closed</td>
+                <td><span class="closed-status">Closed</span></td>
                 <td><button disabled>Closed</button></td>
             </tr>
 
