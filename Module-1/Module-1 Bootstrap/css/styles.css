@@ -1,0 +1,94 @@
+:root {
+  --dark: #222831;
+  --gray: #393e46;
+  --teal: #00adb5;
+  --light: #eeeeee;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--light);
+  font-family: "Segoe UI", sans-serif;
+  color: var(--dark);
+}
+
+/* Navbar */
+
+.navbar {
+  background: var(--dark);
+}
+
+.navbar-brand {
+  color: var(--teal) !important;
+  font-weight: bold;
+}
+
+.nav-link {
+  color: white !important;
+}
+
+.nav-link:hover {
+  color: var(--teal) !important;
+}
+
+/* Hero */
+
+.hero {
+  min-height: 60vh;
+  background: linear-gradient(135deg, var(--dark), var(--gray));
+
+  color: white;
+
+  display: flex;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.btn-custom {
+  background: var(--teal);
+  color: white;
+}
+
+.btn-custom:hover {
+  background: #01959c;
+}
+
+/* Cards */
+
+.demo-card {
+  border: none;
+  border-radius: 20px;
+  transition: 0.3s;
+  overflow: hidden;
+}
+
+.demo-card:hover {
+  transform: translateY(-8px);
+
+  box-shadow: 0 10px 25px rgba(0, 173, 181, 0.3);
+}
+
+.section-title {
+  color: var(--teal);
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Footer */
+
+footer {
+  background: var(--dark);
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
