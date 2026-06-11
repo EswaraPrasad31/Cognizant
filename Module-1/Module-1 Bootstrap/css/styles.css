@@ -166,3 +166,73 @@ footer {
   padding: 20px;
   text-align: center;
 }
+
+.demo-card {
+  border: none;
+  border-radius: 20px;
+  transition: 0.3s;
+  background: #393e46;
+  color: white;
+}
+
+.demo-card:hover {
+  transform: translateY(-8px);
+
+  box-shadow: 0 10px 25px rgba(0, 173, 181, 0.35);
+}
+
+.section-title {
+  color: #00adb5;
+
+  text-align: center;
+
+  font-weight: bold;
+
+  margin-bottom: 40px;
+}
+
+/* Exercise 17 */
+
+.icon-btn {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 60px;
+
+  height: 60px;
+
+  margin: 10px;
+
+  font-size: 1.5rem;
+
+  color: white;
+
+  background: #00adb5;
+
+  border-radius: 50%;
+
+  text-decoration: none;
+
+  transition: 0.3s;
+}
+
+.icon-btn:hover {
+  transform: translateY(-5px);
+
+  background: #0098a0;
+}
+
+/* Exercise 18 */
+
+.accordion-button:not(.collapsed) {
+  background: #00adb5;
+
+  color: white;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+}
